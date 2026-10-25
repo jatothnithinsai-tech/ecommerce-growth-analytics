@@ -1,0 +1,13 @@
+// Starter measures, assuming imported table names match Athena views.
+Sessions = COUNTROWS(sessions)
+Observed Users = DISTINCTCOUNT(sessions[user_pseudo_id])
+Purchasing Sessions = SUM(sessions[has_purchase])
+Session Purchase Rate = DIVIDE([Purchasing Sessions], [Sessions])
+Engaged Sessions = SUM(sessions[engaged_session])
+Engagement Rate = DIVIDE([Engaged Sessions], [Sessions])
+View Sessions = COUNTROWS(session_funnel)
+Cart Sessions = COUNT(session_funnel[cart_us])
+Checkout Sessions = COUNT(session_funnel[checkout_us])
+Ordered Purchase Sessions = COUNT(session_funnel[purchase_us])
+View to Purchase Rate = DIVIDE([Ordered Purchase Sessions], [View Sessions])
+// Observed Users above covers eligible sessions, not users missing session IDs.

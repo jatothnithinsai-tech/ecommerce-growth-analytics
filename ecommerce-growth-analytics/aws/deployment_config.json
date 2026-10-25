@@ -1,0 +1,16 @@
+{
+  "region": "eu-north-1",
+  "bucket": "ecommerce-growth-analytics-20261024-nsj",
+  "data_prefix": "Data/aws_ready/",
+  "athena_result_prefix": "query-results/",
+  "database": "ga4_growth",
+  "table": "events",
+  "views": [
+    "sessions",
+    "session_funnel"
+  ],
+  "workgroup": "primary",
+  "encryption": "SSE-S3",
+  "block_public_access": true,
+  "versioning": false
+}

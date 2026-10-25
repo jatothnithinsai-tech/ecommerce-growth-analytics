@@ -1,0 +1,9 @@
+{
+  "gcp_project_id": "YOUR_GCP_PROJECT_ID",
+  "bigquery_location": "US",
+  "maximum_bytes_billed": 1000000000,
+  "aws_region": "us-east-1",
+  "s3_bucket": "YOUR_GLOBALLY_UNIQUE_BUCKET",
+  "s3_prefix": "ga4-growth",
+  "athena_database": "ga4_growth"
+}
