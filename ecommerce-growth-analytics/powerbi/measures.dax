@@ -1,13 +1,14 @@
-// Starter measures, assuming imported table names match Athena views.
-Sessions = COUNTROWS(sessions)
-Observed Users = DISTINCTCOUNT(sessions[user_pseudo_id])
-Purchasing Sessions = SUM(sessions[has_purchase])
-Session Purchase Rate = DIVIDE([Purchasing Sessions], [Sessions])
-Engaged Sessions = SUM(sessions[engaged_session])
-Engagement Rate = DIVIDE([Engaged Sessions], [Sessions])
-View Sessions = COUNTROWS(session_funnel)
-Cart Sessions = COUNT(session_funnel[cart_us])
-Checkout Sessions = COUNT(session_funnel[checkout_us])
-Ordered Purchase Sessions = COUNT(session_funnel[purchase_us])
-View to Purchase Rate = DIVIDE([Ordered Purchase Sessions], [View Sessions])
-// Observed Users above covers eligible sessions, not users missing session IDs.
+// Table name must be DashboardData. Import RowType as text and metrics as numeric.
+// Measures deliberately select the correct grain; never sum all mixed RowTypes.
+Total Sessions = CALCULATE(SUM(DashboardData[Sessions]), DashboardData[RowType] = "Overview")
+Observed Users = CALCULATE(SUM(DashboardData[Users]), DashboardData[RowType] = "Overview")
+Purchasing Sessions = CALCULATE(SUM(DashboardData[PurchasingSessions]), DashboardData[RowType] = "Overview")
+Overall Session Purchase Rate = DIVIDE([Purchasing Sessions], [Total Sessions])
+Daily Sessions = CALCULATE(SUM(DashboardData[Sessions]), DashboardData[RowType] = "Daily")
+Daily Purchasing Sessions = CALCULATE(SUM(DashboardData[PurchasingSessions]), DashboardData[RowType] = "Daily")
+Daily Purchase Rate = DIVIDE([Daily Purchasing Sessions], [Daily Sessions])
+Acquisition Purchase Rate = DIVIDE(CALCULATE(SUM(DashboardData[PurchasingSessions]), DashboardData[RowType] = "Acquisition"), CALCULATE(SUM(DashboardData[Sessions]), DashboardData[RowType] = "Acquisition"))
+Device Ordered Purchase Rate = DIVIDE(CALCULATE(SUM(DashboardData[OrderedPurchases]), DashboardData[RowType] = "Device"), CALCULATE(SUM(DashboardData[ViewSessions]), DashboardData[RowType] = "Device"))
+Cohort Retention Rate = DIVIDE(SUM(DashboardData[ActiveUsers]), SUM(DashboardData[CohortUsers]))
+// Cohort Retention Rate: apply RowType=Cohort and a single WeekNumber or matrix cells.
+// Do not sum users across daily/source/segment rows or cohort sizes across weeks.

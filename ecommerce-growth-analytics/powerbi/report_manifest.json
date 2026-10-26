@@ -1,0 +1,13 @@
+{
+  "report_name": "Ecommerce Growth & Customer Journey",
+  "saved_on": "2026-10-26",
+  "authoring_platform": "Power BI Service",
+  "pages": ["Executive Overview", "Customer Journey", "Acquisition", "Weekly Retention", "Daily Trends", "Device Performance", "All-in-One Dashboard"],
+  "summary_page_position": "last",
+  "summary_canvas": {"width": 1920, "height": 1080},
+  "detail_canvas": {"width": 1280, "height": 720},
+  "dataset": {"file": "dashboard_data.csv", "table": "DashboardData", "rows": 205, "columns": 27, "date_start": "2020-11-01", "date_end": "2021-01-31"},
+  "exports": {"image": "ecommerce-growth-dashboard.png", "pdf": "ecommerce-growth-dashboard.pdf", "pdf_pages": 1, "pbix_included": false},
+  "color_palette": "Electric with visual-specific pastel and accent overrides",
+  "safeguards": ["Filter each visual to its RowType", "Do not sum distinct users across groups", "Do not sum precomputed rates across grains", "Disable retention totals", "Leave future cohort cells blank", "Device comparison is exploratory and inconclusive"]
+}
