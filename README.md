@@ -1,28 +1,16 @@
-<div align="center">
+# Ecommerce Growth & Customer Journey
 
-# Ecommerce Growth Analytics
+**Python · SQL · BigQuery · Amazon S3 / Athena · Power BI**
 
-### Understanding the journey from discovery to purchase
+An analytics portfolio project investigating conversion, acquisition, device behaviour and weekly retention in Google's historical GA4 ecommerce sample. The pipeline reconciles 4,295,584 events across 92 days and turns them into reviewable SQL, aggregate outputs and genuine Power BI report exports.
 
-**An end-to-end GA4 analytics portfolio project**  
-Python preparation · Cloud SQL analysis · Power BI storytelling
-
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
-![SQL](https://img.shields.io/badge/SQL-7C3AED?style=flat-square&logoColor=white)
-![BigQuery](https://img.shields.io/badge/BigQuery-4285F4?style=flat-square&logo=googlebigquery&logoColor=white)
-![Amazon S3](https://img.shields.io/badge/Amazon_S3-16A34A?style=flat-square&logoColor=white)
-![Athena](https://img.shields.io/badge/Amazon_Athena-F59E0B?style=flat-square&logoColor=white)
-![Power BI](https://img.shields.io/badge/Power_BI-F2C811?style=flat-square&logoColor=black)
-
-[Dashboard](#-dashboard-preview) · [Key results](#-the-numbers) · [Workflow](#-how-it-works) · [Repository](#-explore-the-project) · [Reproduce](#-explore-or-reproduce)
-
-</div>
-
----
+**Explore:** [dashboard PDF](ecommerce-growth-analytics/powerbi/ecommerce-growth-dashboard.pdf) · [SQL analyses](ecommerce-growth-analytics/sql/athena/) · [validation record](ecommerce-growth-analytics/data/quality/pipeline_validation_summary.json) · [reproduction guide](ecommerce-growth-analytics/docs/run_data_pipeline.md)
 
 ## 🎨 Dashboard preview
 
 ![Ecommerce Growth and Customer Journey — Power BI dashboard](ecommerce-growth-analytics/powerbi/ecommerce-growth-dashboard.png)
+
+*Actual saved Power BI Service capture. The editable report remains in its authenticated workspace; the PNG and PDF are public review artifacts.*
 
 [View dashboard PDF](ecommerce-growth-analytics/powerbi/ecommerce-growth-dashboard.pdf) · [Power BI documentation](ecommerce-growth-analytics/powerbi/README.md) · [Explore SQL queries](ecommerce-growth-analytics/sql/athena/)
 
@@ -127,16 +115,18 @@ Full raw, processed, and Parquet event datasets are kept locally and excluded fr
 
 **To review the project:** start with the dashboard above, inspect the [aggregate results](ecommerce-growth-analytics/data/analytics/), and read the [Athena SQL](ecommerce-growth-analytics/sql/athena/). No cloud account is required to view these files.
 
-**To run the pipeline:** use Python 3 and create an isolated environment from the project directory:
+**To run the pipeline:** use Python 3, enter the nested project directory, and create an isolated environment:
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-cp config.example.json config.json
+git clone https://github.com/jatothnithinsai-tech/ecommerce-growth-analytics.git
+cd ecommerce-growth-analytics/ecommerce-growth-analytics
+python -m venv .venv
+# Activate .venv for your shell, then:
+python -m pip install -r requirements.txt
+# Copy config.example.json to config.json and enter your own project settings.
 ```
 
-Configure your own authorized cloud access and review [the pipeline instructions](ecommerce-growth-analytics/docs/run_data_pipeline.md) before running extraction or cloud queries. Keep `config.json`, credentials, and event-level datasets out of Git. The example configuration is a starter; see [the recorded AWS configuration](ecommerce-growth-analytics/aws/deployment_config.json) for the original deployment settings.
+Configure your own authorized cloud access and review [the pipeline instructions](ecommerce-growth-analytics/docs/run_data_pipeline.md) before running extraction or cloud queries. Keep `config.json`, credentials, and event-level datasets out of Git. The example configuration is a starter; the example and historical deployment use different regions, so align your region and bucket settings before running; see [the recorded AWS configuration](ecommerce-growth-analytics/aws/deployment_config.json) for the original deployment settings.
 
 **To rebuild the dashboard:** import [dashboard_data.csv](ecommerce-growth-analytics/powerbi/dashboard_data.csv) as `DashboardData` and follow the [Power BI guide](ecommerce-growth-analytics/powerbi/README.md). The file contains multiple aggregate grains: filter each visual to its appropriate `RowType`; do not sum distinct users or precomputed rates across unrelated groups.
 
@@ -159,7 +149,9 @@ Configure your own authorized cloud access and review [the pipeline instructions
 
 The Power BI report was authored in **Power BI Service**. This repository includes actual dashboard image and PDF exports; the editable report remains in the authenticated workspace. A `.pbix` file is not included.
 
-The project's S3 bucket and `ga4_growth` Glue database were deleted after the analysis exports were saved. Reviewing the repository does not require those AWS resources to remain active.
+The existing project handover records that its S3 bucket and `ga4_growth` Glue database were deleted after the exports were saved. This GitHub portfolio review did not access AWS or independently recheck billing/resource state. Reviewing the exports requires no active cloud resources.
+
+The repository contains recorded coverage/count/checksum validation, not an automated unit-test suite. No fresh cloud execution, ongoing production deployment or realized conversion uplift is claimed.
 
 ## 🌐 Dataset & useful links
 

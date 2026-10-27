@@ -12,7 +12,8 @@ The project was configured manually in the AWS console, not deployed by Terrafor
 
 SQL defines Glue Data Catalog metadata through Athena; no crawler or paid Glue ETL job was required. Python upload.py is an earlier starter and does not implement this console-upload layout.
 
-## Cleanup status
-No resources have been deleted by the agent. Before cleanup, verify the GitHub push and local raw, processed and Parquet checksums. GitHub contains code and aggregate results, not the full event-level data backup. Keep a separate copy of local data if you require protection against disk loss.
+## Historical cleanup status
 
-After backup verification: empty and delete this project's S3 bucket (including query results), then drop only ga4_growth views/tables/database. These are project-specific resources; do not delete unrelated resources or the AWS account. Verify S3 is empty and check Billing across regions. Console sign-out does not stop storage usage. Actual cleanup must be recorded when performed.
+The root project handover records that the project S3 bucket and `ga4_growth` Glue database were deleted after aggregate exports were saved. This documentation review did not sign in to AWS, run cleanup, inspect billing or independently verify current resource state. No ongoing cloud deployment is claimed.
+
+If you reproduce this project in your own account, review query/storage costs, keep your backups, and remove only resources you intentionally create when you are finished. Saved GitHub outputs do not require the original cloud resources.
