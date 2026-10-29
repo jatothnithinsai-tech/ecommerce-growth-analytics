@@ -16,7 +16,7 @@ The report was authored and saved in Power BI Service on a Mac. It contains six 
 6. Device Performance
 7. All-in-One Dashboard
 
-The PNG and PDF are exports of the actual Power BI report, not a Python mockup. The interactive report remains in its authenticated Power BI workspace. No `.pbix` file has been exported or included.
+The PNG and PDF are exports of the actual Power BI report. A genuine editable report has not been recovered from the inspected local files or full public Git history. The authenticated Power BI workspace is an unverified recovery route. No replacement report was fabricated; see the [editable report recovery audit](../docs/editable-report-recovery.md).
 
 ## Files
 
@@ -46,6 +46,8 @@ Period: **1 November 2020–31 January 2021** (92 days).
 Overall purchase rate and ordered-funnel conversion have different denominators.
 
 ## Rebuild and interpret
+
+The guidance below describes the aggregate data contract. Importing the CSV does not recover the original report's model, calculations, layout or interactions. The portfolio redesign remains pending the genuine editable source.
 
 Import `dashboard_data.csv` into Power BI and name its table `DashboardData`. Counts should be whole numbers, dates should be dates, rates should be decimal numbers formatted as percentages, and WeekNumber should be a categorical key when used as matrix columns.
 

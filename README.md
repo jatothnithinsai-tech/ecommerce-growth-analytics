@@ -10,7 +10,9 @@ An analytics portfolio project investigating conversion, acquisition, device beh
 
 ![Ecommerce Growth and Customer Journey — Power BI dashboard](ecommerce-growth-analytics/powerbi/ecommerce-growth-dashboard.png)
 
-*Actual saved Power BI Service capture. The editable report remains in its authenticated workspace; the PNG and PDF are public review artifacts.*
+*Actual saved Power BI Service capture. The PNG and PDF are public review artifacts. The genuine editable report has not been recovered; its authenticated workspace remains an unverified recovery route.*
+
+**Redesign status:** blocked pending the original editable report. Local workspaces, recovery files and the complete public Git history were checked; no replacement was fabricated. See the [editable report recovery audit](ecommerce-growth-analytics/docs/editable-report-recovery.md) for evidence and the remaining recovery route.
 
 [View dashboard PDF](ecommerce-growth-analytics/powerbi/ecommerce-growth-dashboard.pdf) · [Power BI documentation](ecommerce-growth-analytics/powerbi/README.md) · [Explore SQL queries](ecommerce-growth-analytics/sql/athena/)
 
